@@ -1,0 +1,58 @@
+[
+  {
+    "name": "about",
+    "path": "/about",
+    "component": "D:\\\\adev\\\\DEV-ED\\\\vue-js\\\\nuxt.js\\\\chapter_3\\\\pages\\\\about\\\\index.vue",
+    "chunkName": "pages/about/index",
+    "_name": "_911f8426"
+  },
+  {
+    "name": "admin",
+    "path": "/admin",
+    "component": "D:\\\\adev\\\\DEV-ED\\\\vue-js\\\\nuxt.js\\\\chapter_3\\\\pages\\\\admin\\\\index.vue",
+    "chunkName": "pages/admin/index",
+    "_name": "_4b1d50eb"
+  },
+  {
+    "name": "posts",
+    "path": "/posts",
+    "component": "D:\\\\adev\\\\DEV-ED\\\\vue-js\\\\nuxt.js\\\\chapter_3\\\\pages\\\\posts\\\\index.vue",
+    "chunkName": "pages/posts/index",
+    "_name": "_10631de7"
+  },
+  {
+    "name": "admin-auth",
+    "path": "/admin/auth",
+    "component": "D:\\\\adev\\\\DEV-ED\\\\vue-js\\\\nuxt.js\\\\chapter_3\\\\pages\\\\admin\\\\auth\\\\index.vue",
+    "chunkName": "pages/admin/auth/index",
+    "_name": "_5c661a03"
+  },
+  {
+    "name": "admin-new-post",
+    "path": "/admin/new-post",
+    "component": "D:\\\\adev\\\\DEV-ED\\\\vue-js\\\\nuxt.js\\\\chapter_3\\\\pages\\\\admin\\\\new-post\\\\index.vue",
+    "chunkName": "pages/admin/new-post/index",
+    "_name": "_741e1544"
+  },
+  {
+    "name": "admin-postId",
+    "path": "/admin/:postId",
+    "component": "D:\\\\adev\\\\DEV-ED\\\\vue-js\\\\nuxt.js\\\\chapter_3\\\\pages\\\\admin\\\\_postId\\\\index.vue",
+    "chunkName": "pages/admin/_postId/index",
+    "_name": "_6bec624f"
+  },
+  {
+    "name": "posts-id",
+    "path": "/posts/:id",
+    "component": "D:\\\\adev\\\\DEV-ED\\\\vue-js\\\\nuxt.js\\\\chapter_3\\\\pages\\\\posts\\\\_id\\\\index.vue",
+    "chunkName": "pages/posts/_id/index",
+    "_name": "_85e270da"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "D:\\\\adev\\\\DEV-ED\\\\vue-js\\\\nuxt.js\\\\chapter_3\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_833e388c"
+  }
+]

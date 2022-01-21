@@ -1,0 +1,50 @@
+<template>
+  <div class="admin-new-post-page">
+    <section class="new-post-form">
+      <AdminPostForm />
+    </section>
+  </div>
+</template>
+
+<script>
+import AdminPostForm from "@/components/Admin/AdminPostForm";
+
+export default {
+  components: {
+    AdminPostForm,
+  },
+  layout: 'admin',
+  // data() {
+  //   return {
+  //     editedPost: {
+  //       author: "",
+  //       title: "",
+  //       thumbnailLink: "",
+  //       content: "",
+  //     },
+  //   };
+  // },
+  // methods: {
+  //   onSubmit() {
+  //     // submit the post
+  //   },
+  //   onCancel() {
+  //     // navigate back
+  //     this.$router.push("/admin");
+  //   },
+  // },
+};
+</script>
+
+<style scoped>
+.new-post-form {
+  width: 90%;
+  margin: 20px auto;
+}
+
+@media (min-width: 768px) {
+  .new-post-form {
+    width: 500px;
+  }
+}
+</style>
