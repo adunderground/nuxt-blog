@@ -1,18 +1,28 @@
 <template>
-  <form @submit.prevent="onSubmit">
-    <AppControlInput v-model="editedPost.author">Author Name</AppControlInput>
+  <form @submit.prevent="onSave">
+    <AppControlInput v-model="editedPost.fields.author"
+      >Author Name</AppControlInput
+    >
 
-    <AppControlInput v-model="editedPost.title">Title</AppControlInput>
+    <AppControlInput v-model="editedPost.fields.title">Title</AppControlInput>
 
-    <AppControlInput v-model="editedPost.thumbnailLink"
+    <AppControlInput v-model="editedPost.fields.thumbnail"
       >Thumbnail Link</AppControlInput
     >
 
-    <AppControlInput control-type="textarea" v-model="editedPost.content"
+    <AppControlInput
+      control-type="textarea"
+      v-model="editedPost.fields.previewText"
+      >Preview Text</AppControlInput
+    >
+
+    <AppControlInput
+      control-type="textarea"
+      v-model="editedPost.fields.postContent"
       >Content</AppControlInput
     >
 
-    <AppButton type="submit">Save</AppButton>
+    <AppButton type="submit"> {{ buttonCaption }}</AppButton>
 
     <AppButton
       type="button"
@@ -39,16 +49,26 @@ export default {
       editedPost: this.post
         ? { ...this.post }
         : {
-            author: "",
-            title: "",
-            thumbnailLink: "",
-            content: "",
+            fields: {
+              author: "",
+              title: "",
+              thumbnail: "",
+              previewText: "",
+              postContent: "",
+            },
           },
     };
   },
+  computed: {
+    buttonCaption() {
+      return this.post ? "Update post" : "Submit post";
+    },
+  },
   methods: {
-    onSubmit() {
+    onSave() {
       // submit the post
+      console.log(this.editedPost);
+      this.$emit("submit", this.editedPost);
     },
     onCancel() {
       // navigate back

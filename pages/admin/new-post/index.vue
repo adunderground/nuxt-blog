@@ -1,11 +1,10 @@
 <template>
   <div class="admin-new-post-page">
     <section class="new-post-form">
-      <AdminPostForm />
+      <AdminPostForm @submit="onSubmit" />
     </section>
   </div>
 </template>
-
 <script>
 import AdminPostForm from "@/components/Admin/AdminPostForm";
 
@@ -13,26 +12,16 @@ export default {
   components: {
     AdminPostForm,
   },
-  layout: 'admin',
-  // data() {
-  //   return {
-  //     editedPost: {
-  //       author: "",
-  //       title: "",
-  //       thumbnailLink: "",
-  //       content: "",
-  //     },
-  //   };
-  // },
-  // methods: {
-  //   onSubmit() {
-  //     // submit the post
-  //   },
-  //   onCancel() {
-  //     // navigate back
-  //     this.$router.push("/admin");
-  //   },
-  // },
+  layout: "admin",
+  methods: {
+    onSubmit(postData) {
+      // create a new post
+      this.$store.dispatch("createPost", postData);
+
+      // call vuex to update the list of loaded posts
+      this.$store.dispatch("fetchPosts");
+    },
+  },
 };
 </script>
 

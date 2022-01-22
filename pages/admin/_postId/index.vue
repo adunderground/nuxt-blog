@@ -1,7 +1,7 @@
 <template>
   <div class="admin-post-page">
     <section class="update-form">
-      <AdminPostForm :post="loadedPost" />
+      <AdminPostForm :post="loadedPost" @submit="onUpdate" />
     </section>
   </div>
 </template>
@@ -12,22 +12,23 @@ export default {
   components: {
     AdminPostForm,
   },
-  layout: 'admin',
-  data() {
-    return {
-      loadedPost: {
-        author: "ad",
-        title: "asdzxc",
-        thumbnailLink:
-          "https://blueseatblogs.com/wp-content/uploads/2018/07/consciousness-709143.jpg",
-        content:
-          "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius, aspernatur?",
-      },
-    };
+  layout: "admin",
+  computed: {
+    loadedPost() {
+      return this.$store.getters.loadedPosts.filter(
+        (post) => post.id === this.$route.params.postId
+      )[0];
+    },
   },
 };
 </script>
 
 <style scoped>
-
+.admin-post-page {
+  display: flex;
+  justify-content: center;
+}
+.update-form {
+  width: 70vw;
+}
 </style>

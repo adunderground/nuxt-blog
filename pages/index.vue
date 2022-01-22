@@ -19,26 +19,12 @@ export default {
   components: {
     PostList,
   },
-  data() {
-    // return {
-    //   loadedPosts: [],
-    // };
+  computed: {
+    loadedPosts() {
+      const previewNumberOfPosts = 3;
+      return this.$store.getters.loadedPosts.slice(0, previewNumberOfPosts);
+    },
   },
-  async asyncData({ $axios }) {
-    const responce = await $axios(
-      "https://api.airtable.com/v0/appN9ROFiOyvKhG3t/Nuxt%20Course?maxRecords=3&view=Grid%20view",
-      {
-        headers: {
-          Authorization: "Bearer keyqeZENw1Pv4W6c6",
-        },
-      }
-    );
-    const data = await responce.data;
-    const loadedPosts = data.records;
-
-    return { loadedPosts };
-  },
-
   methods: {
     log() {
       console.log(this.loadedPosts);

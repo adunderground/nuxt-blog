@@ -7,19 +7,31 @@
       ></div>
       <div class="post-content">
         <h1>{{ title }}</h1>
-        <p>{{ previewText }}</p>
+        <p>{{ formatedText }}</p>
       </div>
     </article>
   </nuxt-link>
 </template>
 
 <script>
-// https://blueseatblogs.com/wp-content/uploads/2018/07/consciousness-709143.jpg
 export default {
   props: ["id", "title", "previewText", "thumbnail", "isAdmin"],
   computed: {
     postLink() {
       return this.isAdmin ? "/admin/" + this.id : "/posts/" + this.id;
+    },
+    PREVIEW_TEXT_MAX_LEN() {
+      return this.$globalVars.PREVIEW_TEXT_MAX_LEN;
+    },
+    formatedText() {
+      return this.previewText.length >= this.PREVIEW_TEXT_MAX_LEN
+        ? this.formatText(this.previewText)
+        : this.previewText;
+    },
+  },
+  methods: {
+    formatText(text) {
+      return text.substring(0, this.PREVIEW_TEXT_MAX_LEN) + "...";
     },
   },
 };

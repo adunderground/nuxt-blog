@@ -1,12 +1,12 @@
 <template>
   <div class="single-post">
     <section class="post">
-      <h1 class="post-title">Title</h1>
+      <h1 class="post-title">{{ post.fields.title }}</h1>
       <div class="post-details">
-        <div>Last updated on XX/XX</div>
-        <div>Written by NAME</div>
+        <div>Last updated on {{ formattedDate }}</div>
+        <div>Written by {{ post.fields.author }}</div>
       </div>
-      <p>Content of the post</p>
+      <p>{{ post.fields.postContent }}</p>
       <div class="post-footer">
         <p>
           Let us know your thoughts about this post. Send us an
@@ -16,6 +16,28 @@
     </section>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    test() {
+      console.log(this.$route.params.id);
+    },
+  },
+  computed: {
+    post() {
+      return this.$store.getters.loadedPosts.filter(
+        (post) => post.id === this.$route.params.id
+      )[0];
+    },
+    formattedDate() {
+      const date = new Date(this.post.fields.lastUpdated);
+
+      return date.toLocaleDateString() + " at " + date.toLocaleTimeString();
+    },
+  },
+};
+</script>
 
 <style scoped>
 .single-post {
@@ -49,9 +71,8 @@
   flex-direction: column;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .post-details {
-    flex-direction: row;
   }
 }
 

@@ -16,7 +16,6 @@
 import PostPreview from "@/components/Posts/PostPreview";
 
 export default {
-  //https://blueseatblogs.com/wp-content/uploads/2018/07/consciousness-709143.jpg
   components: {
     PostPreview,
   },
