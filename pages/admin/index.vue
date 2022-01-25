@@ -27,6 +27,9 @@ export default {
       return this.$store.getters.loadedPosts;
     },
   },
+  mounted() {
+    this.$store.dispatch("fetchPosts");
+  },
 };
 </script>
 

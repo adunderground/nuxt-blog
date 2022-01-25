@@ -38,30 +38,27 @@ export default () => {
       },
       async createPost(context, postData) {
         const POST_BODY = {
-          records: [
-            {
-              fields: postData,
-            },
-          ],
+          records: [postData],
         };
 
+        console.log(POST_BODY);
         const responce = await axios.post(BASE_URL, POST_BODY, CONFIG);
         const data = await responce.data;
       },
-      async updatePost(context, data) {
-        const PATCH_BODY = {
-          id: data.id,
-          records: [
-            {
-              fields: data.postData,
-            },
-          ],
+      async updatePost(context, postData) {
+        const PUT_BODY = {
+          records: [postData],
         };
-        console.log(PATCH_BODY);
-        const responce = await axios.patch(BASE_URL, POST_BODY, CONFIG);
-        const responceData = await responce.data;
+        console.log(PUT_BODY);
 
-        console.log(responceData);
+        // using destructive put call
+        const responce = await axios.put(BASE_URL, PUT_BODY, CONFIG);
+        const responceData = await responce.data;
+      },
+      async deletePost(context, postId) {
+        const DELETE_URL = BASE_URL + `/${postId}`;
+        const responce = await axios.delete(DELETE_URL, CONFIG);
+        const responceData = await responce.data;
       },
     },
   });

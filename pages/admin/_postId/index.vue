@@ -1,7 +1,7 @@
 <template>
   <div class="admin-post-page">
     <section class="update-form">
-      <AdminPostForm :post="loadedPost" @submit="onUpdate" />
+      <AdminPostForm :post="loadedPost" @submit="onUpdate" @delete="onDelete" />
     </section>
   </div>
 </template>
@@ -18,6 +18,15 @@ export default {
       return this.$store.getters.loadedPosts.filter(
         (post) => post.id === this.$route.params.postId
       )[0];
+    },
+  },
+  methods: {
+    onUpdate(postData) {
+      delete postData.createdTime;
+      this.$store.dispatch("updatePost", postData);
+    },
+    onDelete(postId) {
+      this.$store.dispatch("deletePost", postId);
     },
   },
 };

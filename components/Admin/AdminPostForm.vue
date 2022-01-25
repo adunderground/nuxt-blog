@@ -29,8 +29,16 @@
       style="margin-left: 10px"
       btn-style="cancel"
       @click="onCancel"
-      >Cancel</AppButton
-    >
+      >Cancel
+    </AppButton>
+
+    <AppButton
+      v-if="isEditing"
+      type="button"
+      style="margin-left: 10px"
+      @click="onDelete"
+      >Delete
+    </AppButton>
   </form>
 </template>
 
@@ -60,18 +68,26 @@ export default {
     };
   },
   computed: {
+    isEditing() {
+      return !!this.post;
+    },
     buttonCaption() {
-      return this.post ? "Update post" : "Submit post";
+      return this.isEditing ? "Update post" : "Submit post";
     },
   },
   methods: {
     onSave() {
       // submit the post
-      console.log(this.editedPost);
       this.$emit("submit", this.editedPost);
+      this.$router.push("/admin");
     },
     onCancel() {
       // navigate back
+      this.$router.push("/admin");
+    },
+    onDelete() {
+      // navigate back
+      this.$emit("delete", this.editedPost.id);
       this.$router.push("/admin");
     },
   },

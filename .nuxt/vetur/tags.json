@@ -1,7 +1,4 @@
 {
-  "AdminPostForm": {
-    "description": "Auto imported from components/Admin/AdminPostForm.vue"
-  },
   "NavigationTheHeader": {
     "description": "Auto imported from components/Navigation/TheHeader.vue"
   },
@@ -10,6 +7,9 @@
   },
   "NavigationTheSideNavToggle": {
     "description": "Auto imported from components/Navigation/TheSideNavToggle.vue"
+  },
+  "AdminPostForm": {
+    "description": "Auto imported from components/Admin/AdminPostForm.vue"
   },
   "PostsPostList": {
     "description": "Auto imported from components/Posts/PostList.vue"
