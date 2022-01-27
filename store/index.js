@@ -22,6 +22,20 @@ export default () => {
       setLoadedPosts(state, posts) {
         state.loadedPosts = posts;
       },
+      addPost(state, post) {
+        state.loadedPosts.push(post);
+      },
+      editPost(state, editedPost) {
+        const postIndex = state.loadedPosts.findIndex(
+          (post) => post.id === editedPost.id
+        );
+        state.loadedPosts[postIndex] = editedPost;
+      },
+      deletePost(state, postId) {
+        state.loadedPosts = state.loadedPosts.filter(
+          (post) => post.id != postId
+        );
+      },
     },
     actions: {
       async nuxtServerInit(vuexContext, nuxtContext) {
@@ -44,8 +58,13 @@ export default () => {
         console.log(POST_BODY);
         const responce = await axios.post(BASE_URL, POST_BODY, CONFIG);
         const data = await responce.data;
+
+        context.commit("addPost", data.records[0]);
       },
       async updatePost(context, postData) {
+        // need to delete createdTime to pass only id and post fields
+        delete postData.createdTime;
+
         const PUT_BODY = {
           records: [postData],
         };
@@ -54,11 +73,13 @@ export default () => {
         // using destructive put call
         const responce = await axios.put(BASE_URL, PUT_BODY, CONFIG);
         const responceData = await responce.data;
+        context.commit("editPost", postData);
       },
       async deletePost(context, postId) {
         const DELETE_URL = BASE_URL + `/${postId}`;
         const responce = await axios.delete(DELETE_URL, CONFIG);
         const responceData = await responce.data;
+        context.commit("deletePost", postId);
       },
     },
   });

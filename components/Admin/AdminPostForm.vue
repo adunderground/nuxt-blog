@@ -79,16 +79,13 @@ export default {
     onSave() {
       // submit the post
       this.$emit("submit", this.editedPost);
-      this.$router.push("/admin");
     },
     onCancel() {
       // navigate back
-      this.$router.push("/admin");
     },
     onDelete() {
       // navigate back
       this.$emit("delete", this.editedPost.id);
-      this.$router.push("/admin");
     },
   },
 };

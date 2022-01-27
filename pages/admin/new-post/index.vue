@@ -14,12 +14,10 @@ export default {
   },
   layout: "admin",
   methods: {
-    onSubmit(postData) {
+    async onSubmit(postData) {
       // create a new post
-      this.$store.dispatch("createPost", postData);
-
-      // call vuex to update the list of loaded posts
-      this.$store.dispatch("fetchPosts");
+      await this.$store.dispatch("createPost", postData);
+      this.$router.push("/admin");
     },
   },
 };

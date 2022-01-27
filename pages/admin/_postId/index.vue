@@ -21,12 +21,13 @@ export default {
     },
   },
   methods: {
-    onUpdate(postData) {
-      delete postData.createdTime;
-      this.$store.dispatch("updatePost", postData);
+    async onUpdate(postData) {
+      await this.$store.dispatch("updatePost", postData);
+      this.$router.push("/admin");
     },
-    onDelete(postId) {
-      this.$store.dispatch("deletePost", postId);
+    async onDelete(postId) {
+      await this.$store.dispatch("deletePost", postId);
+      this.$router.push("/admin");
     },
   },
 };
