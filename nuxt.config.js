@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "chapter_3",
+    title: "Rando Blog",
     htmlAttrs: {
       lang: "en",
     },
@@ -22,11 +22,17 @@ export default {
     ],
   },
 
+  // loading progress bar
+  loading: {
+    color: "#673ab7a6",
+    height: "12px",
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ["@/plugins/globalVars.js"],
+  plugins: ["~plugins/global-vars.js", "~plugins/global-components.js"],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -39,4 +45,8 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  env: {
+    baseURL: process.env.BASE_URL || 'https://api.airtable.com/v0/appN9ROFiOyvKhG3t/Nuxt%20Course',
+  }
 };

@@ -8,17 +8,7 @@
 </template>
 
 <script>
-import PostList from "@/components/Posts/PostList";
-
-// const Airtable = require("airtable");
-// const base = new Airtable({ apiKey: "keyqeZENw1Pv4W6c6" }).base(
-//   "appN9ROFiOyvKhG3t"
-// );
-
 export default {
-  components: {
-    PostList,
-  },
   computed: {
     loadedPosts() {
       const previewNumberOfPosts = 3;

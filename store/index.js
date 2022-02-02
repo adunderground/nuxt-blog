@@ -1,7 +1,7 @@
 import Vuex from "vuex";
 import axios from "axios";
 
-const BASE_URL = "https://api.airtable.com/v0/appN9ROFiOyvKhG3t/Nuxt%20Course";
+// const BASE_URL = "https://api.airtable.com/v0/appN9ROFiOyvKhG3t/Nuxt%20Course";
 const CONFIG = {
   headers: {
     Authorization: "Bearer keyqeZENw1Pv4W6c6",
@@ -39,13 +39,13 @@ export default () => {
     },
     actions: {
       async nuxtServerInit(vuexContext, nuxtContext) {
-        const responce = await axios(BASE_URL, CONFIG);
+        const responce = await axios(process.env.baseURL, CONFIG);
         const data = await responce.data;
         const loadedPosts = data.records;
         vuexContext.commit("setLoadedPosts", loadedPosts);
       },
       async fetchPosts(context) {
-        const responce = await axios(BASE_URL, CONFIG);
+        const responce = await axios(process.env.baseURL, CONFIG);
         const data = await responce.data;
         const loadedPosts = data.records;
         context.commit("setLoadedPosts", loadedPosts);
@@ -56,7 +56,7 @@ export default () => {
         };
 
         console.log(POST_BODY);
-        const responce = await axios.post(BASE_URL, POST_BODY, CONFIG);
+        const responce = await axios.post(process.env.baseURL, POST_BODY, CONFIG);
         const data = await responce.data;
 
         context.commit("addPost", data.records[0]);
@@ -71,12 +71,12 @@ export default () => {
         console.log(PUT_BODY);
 
         // using destructive put call
-        const responce = await axios.put(BASE_URL, PUT_BODY, CONFIG);
+        const responce = await axios.put(process.env.baseURL, PUT_BODY, CONFIG);
         const responceData = await responce.data;
         context.commit("editPost", postData);
       },
       async deletePost(context, postId) {
-        const DELETE_URL = BASE_URL + `/${postId}`;
+        const DELETE_URL = process.env.baseURL + `/${postId}`;
         const responce = await axios.delete(DELETE_URL, CONFIG);
         const responceData = await responce.data;
         context.commit("deletePost", postId);

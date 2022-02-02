@@ -200,7 +200,7 @@ export async function setContext (app, context) {
       payload: context.payload,
       error: context.error,
       base: app.router.options.base,
-      env: {}
+      env: {"baseURL":"https://api.airtable.com/v0/appN9ROFiOyvKhG3t/Nuxt%20Course"}
     }
     // Only set once
 

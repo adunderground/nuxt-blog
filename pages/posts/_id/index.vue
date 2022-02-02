@@ -36,6 +36,9 @@ export default {
       return date.toLocaleDateString() + " at " + date.toLocaleTimeString();
     },
   },
+  head: {
+    title: `🍌 | Rando Blog`,
+  },
 };
 </script>
 
